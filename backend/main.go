@@ -1,10 +1,10 @@
 package main
 
 import (
-	"./config"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/auth0_react_go/config"
 	"net/http"
 	"strings"
 
@@ -59,6 +59,7 @@ func main() {
 	})
 
 	r := mux.NewRouter()
+	http.ListenAndServe(":8080", r)
 
 	// This route is always accessible
 	r.Handle("/api/public", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

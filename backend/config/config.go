@@ -12,7 +12,7 @@ type ConfigList struct {
 var Config ConfigList
 
 func init() {
-	cfg, _ := ini.Load("../config.ini")
+	cfg, _ := ini.Load("config.ini")
 	Config = ConfigList{
 		Audience: cfg.Section("auth0").Key("audience").String(),
 		Iss:      cfg.Section("auth0").Key("iss").String(),
