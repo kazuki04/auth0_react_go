@@ -2,20 +2,19 @@ package config
 
 import (
 	"gopkg.in/ini.v1"
-
 )
 
-type ConfigList {
+type ConfigList struct {
 	Audience string
 	Iss      string
 }
 
 var Config ConfigList
 
-func init(){
+func init() {
 	cfg, _ := ini.Load("../config.ini")
 	Config = ConfigList{
-		Audience: cfg.Section.Key("audience").String(),
-		Iss: cfg.Section.Key("iss").String(),
+		Audience: cfg.Section("auth0").Key("audience").String(),
+		Iss:      cfg.Section("auth0").Key("iss").String(),
 	}
 }
